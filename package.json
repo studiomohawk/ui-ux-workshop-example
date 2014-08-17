@@ -1,0 +1,36 @@
+{
+  "name": "ui-ux-workshop-example",
+  "version": "0.0.1",
+  "description": "This is just a base for the workshop",
+  "main": "index.js",
+  "dependencies": {
+    "browserify": "*",
+    "uglifyjs": "*",
+    "clean-css": "*"
+  },
+  "devDependencies": {
+    "watchify": "*",
+    "catw": "*",
+    "tape": "*",
+    "tap": "*"
+  },
+  "scripts": {
+    "build-js": "browserify browser/main.js | uglifyjs -mc > static/script/bundle.js",
+    "build-css": "cat style/*.css | cleancss -o static/style/bundle.css",
+    "build": "npm run build-js && npm run build-css",
+    "watch-js": "watchify browser/main.js -o static/script/bundle.js -dv",
+    "watch-css": "catw style/*.css | static/style/bundle.css -v",
+    "watch": "npm run watch-js & npm run watch-css",
+    "test": "mocha test/*js",
+    "start": "browser-sync start --config='./bs-config.js'"
+  },
+  "repository": { "type": "git", "url": "git://github.com/studiomohawk/ui-ux-workshop-example.git" },
+  "homepage": "https://github.com/studiomohawk/ui-ux-workshop-example",
+  "keywords": [
+  ],
+  "author" : {
+    "name" : "Yuya Saito",
+    "email" : "studiomohawk@gmail.com"
+  },
+  "license": "MIT"
+}
